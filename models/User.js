@@ -12,7 +12,7 @@ const UserSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
-    unique: true, // Unique email for each user
+    unique: true, 
   },
 
   password: {
@@ -76,6 +76,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     default: 0.00
   },
+
   totalInvest: {
     type: String,
     default: 0.00
