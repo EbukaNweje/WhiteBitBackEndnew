@@ -36,8 +36,8 @@ exports.register = async (req, res, next)=>{
          const token = jwt.sign({id:newUser._id, isAdmin:newUser.isAdmin}, process.env.JWT, {expiresIn: "15m"})
          newUser.token = token
 
-        //  const otpCode = otpGenerator.generate(6, { digits: true, alphabets: false, upperCase: false, specialChars: false });
-        //  newUser.otp = otpCode
+         const otpCode = otpGenerator.generate(6, { digits: true, alphabets: false, upperCase: false, specialChars: false });
+         newUser.otp = otpCode
 
          await newUser.save()
          
