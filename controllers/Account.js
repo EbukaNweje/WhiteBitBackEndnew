@@ -87,12 +87,12 @@ exports.ResAccount = async (req, res, next) => {
 
 exports.sendWithdrawCode = async (req, res,next) => {
     try{
-        const withdrawcodesend = otpGenerator.generate(6, { digits: true, alphabets: false, upperCase: false, specialChars: false });
+        // const withdrawcodesend = otpGenerator.generate(6, { digits: true, alphabets: false, upperCase: false, specialChars: false });
         const userid = req.params.userId
         console.log(userid);   
         const UserData =  await User.findById({_id:userid})
-        UserData.withdrawCode = withdrawcodesend
-        UserData.save() 
+        // UserData.withdrawCode = withdrawcodesend
+        // UserData.save() 
         
             
     const mailOptions ={
