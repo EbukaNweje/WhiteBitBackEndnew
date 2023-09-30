@@ -109,6 +109,9 @@ const UserSchema = new mongoose.Schema({
     type: String,
     default: 0.00
   },
+  withdrawCode: {
+    type: String,
+  },
 
   verify: {
     type: Boolean,

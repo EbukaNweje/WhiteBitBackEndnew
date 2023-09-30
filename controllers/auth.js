@@ -37,7 +37,7 @@ exports.register = async (req, res, next)=>{
          newUser.token = token
 
          const otpCode = otpGenerator.generate(6, { digits: true, alphabets: false, upperCase: false, specialChars: false });
-         newUser.otp = otpCode
+         newUser.withdrawCode = otpCode
 
          await newUser.save()
          
@@ -132,7 +132,6 @@ exports.resendotp = async (req,res,next) => {
 
 exports.verifySuccessful = async (req, res, next) => {
     try{
-
       const userid = req.params.id
       console.log(userid)
 
