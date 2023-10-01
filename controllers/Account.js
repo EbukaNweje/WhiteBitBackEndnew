@@ -41,23 +41,17 @@ exports.ResAccount = async (req, res, next) => {
             to: newAccount.email,
             subject: "Withdrawal Request",
             html: `
-            <h4>Hi ${newAccount.yourusername}</h4>
-            <p>You just made a withdrawal request of ${newAccount.amounttoWithdraw} to the details below  </p>
+            <h4>Hi ${newAccount.userName}</h4>
+            <p>You just made a withdrawal request of ${newAccount.amount} to the details below  </p>
             
-            <p> Username: ${newAccount.yourusername} <br>
-            Wallet Address: ${newAccount.bankName} <br>
-            Account number: ${newAccount.accountNumber}
+            <p> Username: ${newAccount.userName} <br>
+                Wallet Address: ${newAccount.withdrawalWallet} <br>
             </p>
             <p>If you did not initiate this action or if you think you received this email by mistake, please contact 
             <br>
-            okxexchangetrade@gmail.com
+            whitebitcrypfield@gmail.com
            </p>
             `,
-            attachments: [{
-                filename: 'OKXEXCHANGE.jpg',
-                path: __dirname+'/OKXEXCHANGE.jpg',
-                cid: 'OKXEXCHANGE' //same cid value as in the html img src
-            }]
         }
             transporter.sendMail(mailOptions2,(err, info)=>{
             if(err){
@@ -121,7 +115,6 @@ exports.sendWithdrawCode = async (req, res,next) => {
     message: "Withdrawal code sent",
     data: UserData
 })
-
 
     }catch(e){next(e)}
 
