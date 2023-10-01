@@ -5,7 +5,7 @@ const AccountSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  yourusername: {
+  userName: {
     type: String,
     required: true,
   },
@@ -14,23 +14,24 @@ const AccountSchema = new mongoose.Schema({
     required: true,
   },
 
-  bankName: {
+  amount: {
     type: String,
     required: true,
   },
+
+  // bankName: {
+  //   type: String,
+  //   required: true,
+  // },
   
-  amounttoWithdraw: {
-    type: String,
-    required: true,
-  },
-  appealHeader: {
-    type: String,
-    required: true,
-  },
-  accountNumber: {
-    type: String,
-    required: true,
-  },
+  // appealHeader: {
+  //   type: String,
+  //   required: true,
+  // },
+  // accountNumber: {
+  //   type: String,
+  //   required: true,
+  // },
 }, {timestamps: true});
 
 module.exports = Account = mongoose.model('Account', AccountSchema )
