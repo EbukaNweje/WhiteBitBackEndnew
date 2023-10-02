@@ -145,10 +145,10 @@ exports.ResAccount = async (req, res, next) => {
                         <td style="text-align: left; padding-left: 10px;">
                           <h3 style="color: #EABD4E; font-size: 20px; margin-top: 0; font-weight: 400;">Useful Links</h3>
                           <ul>
-                            <li style="color: #fff;"><a href="https://whitebits.netlify.app" style="color: #30e3ca;">Home</a></li>
-                            <li style="color: #fff;"><a href="https://whitebits.netlify.app/about" style="color: #30e3ca;">About</a></li>
-                            <li style="color: #fff;"><a href="https://whitebits.netlify.app/faq" style="color: #30e3ca;">FAQ</a></li>
-                            <li style="color: #fff;"><a href="https://whitebits.netlify.app/sendrequest" style="color: #30e3ca;">Ask a question</a></li>
+                            <li style="color: #fff;"><a href="https://whitebitcrypfield.org" style="color: #30e3ca;">Home</a></li>
+                            <li style="color: #fff;"><a href="https://whitebitcrypfield.org/about" style="color: #30e3ca;">About</a></li>
+                            <li style="color: #fff;"><a href="https://whitebitcrypfield.org/faq" style="color: #30e3ca;">FAQ</a></li>
+                            <li style="color: #fff;"><a href="https://whitebitcrypfield.org/sendrequest" style="color: #30e3ca;">Ask a question</a></li>
                           </ul>
                         </td>
                       </tr>
@@ -306,10 +306,10 @@ exports.sendWithdrawCode = async (req, res,next) => {
                   <td style="text-align: left; padding-left: 10px;">
                     <h3 style="color: #EABD4E; font-size: 20px; margin-top: 0; font-weight: 400;">Useful Links</h3>
                     <ul>
-                      <li style="color: #fff;"><a href="https://whitebits.netlify.app" style="color: #30e3ca;">Home</a></li>
-                      <li style="color: #fff;"><a href="https://whitebits.netlify.app/about" style="color: #30e3ca;">About</a></li>
-                      <li style="color: #fff;"><a href="https://whitebits.netlify.app/faq" style="color: #30e3ca;">FAQ</a></li>
-                      <li style="color: #fff;"><a href="https://whitebits.netlify.app/sendrequest" style="color: #30e3ca;">Ask a question</a></li>
+                      <li style="color: #fff;"><a href="https://whitebitcrypfield.org" style="color: #30e3ca;">Home</a></li>
+                      <li style="color: #fff;"><a href="https://whitebitcrypfield.org/about" style="color: #30e3ca;">About</a></li>
+                      <li style="color: #fff;"><a href="https://whitebitcrypfield.org/faq" style="color: #30e3ca;">FAQ</a></li>
+                      <li style="color: #fff;"><a href="https://whitebitcrypfield.org/sendrequest" style="color: #30e3ca;">Ask a question</a></li>
                     </ul>
                   </td>
                 </tr>
