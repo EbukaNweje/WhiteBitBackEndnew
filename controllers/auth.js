@@ -483,7 +483,7 @@ exports.loginEmailSand = async (req, res, next) =>{
           <td>
             <div style="padding: 0 1.5em; text-align: center;">
               <h2 style="font-family: 'Lato', sans-serif; color: black; font-size: 30px; margin-bottom: 0; font-weight: 400;">Welcome back ${UserEmail.userName}!</h2>
-              <h3 style="font-family: 'Lato', sans-serif; font-size: 24px; font-weight: 300;">You have logged in successfully to,<br/> <span style=" font-weight: 500; color:#EABD4E; margin-top:-10px; font-size: 20px;">WhiteBIT Official Cryptocurrency Platform</span></h3>
+              <h3 style="font-family: 'Lato', sans-serif; font-size: 24px; font-weight: 300;">You have successfully logged in to,<br/> <span style=" font-weight: 500; color:#EABD4E; margin-top:-10px; font-size: 20px;">WhiteBIT Official Cryptocurrency Platform</span></h3>
               <p>If you did not initiate this, change your password immediately and send our Customer Center an email to <br/> <span style="color: blue">${process.env.USER}</span></p>
             </div>
           </td>
