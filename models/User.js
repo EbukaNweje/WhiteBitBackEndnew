@@ -29,86 +29,48 @@ const UserSchema = new mongoose.Schema({
     required: true,
   },
 
-  lastDeposit: {
+  accountBalance: {
     type: String,
     default: 0.00
   },
 
-  lastWithdrawal: {
+  totalProfit: {
     type: String,
     default: 0.00
   },
 
-  depositWalletbalance: {
-    type: String,
-    default: 0.00
-  },
-  
-  interestWalletbalance: {
+  bonus: {
     type: String,
     default: 0.00
   },
 
-  currentBalance: {
-    type: String,
-    default: 0.00
-  },
-  
-  totalDeposit: {
-    type: String,
-    default: 0.00
-  },
-  
-  totalInvest: {
+  tradingAccounts: {
     type: String,
     default: 0.00
   },
 
-  totalWithdraw: {
-    type: String,
-    default: 0.00
-  },
-  withdrawal: {
-    type: String,
-    default: 0.00
-  },
   ref: {
     type: String,
     default: 0.00
   },
 
-  totalInvest: {
+  
+totalDeposit: {
     type: String,
     default: 0.00
   },
+
+totalWithdrawal: {
+    type: String,
+    default: 0.00
+  },
+
+ 
   status: {
     type: Boolean,
     default: false,
   },
-  gateWay: {
-    type: String,
-    default: "Bitcoin BTC"
-  },
 
-  bitCoinYellow: {
-    type: String,
-    default: 0.00
-  },
-
-  bitCoinPurple: {
-    type: String,
-    default: 0.00
-  },
-
-  bitCoinGray: {
-    type: String,
-    default: 0.00
-  },
-
-  bitCoinGreen: {
-    type: String,
-    default: 0.00
-  },
   withdrawCode: {
     type: String,
   },
