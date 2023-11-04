@@ -82,6 +82,51 @@ exports.register = async (req, res, next)=>{
     }
 }
 
+exports.tradingSession = async (req, res, next) => {
+  try{
+    const id = req.params.id;
+    const userInfo = await User.findById(id);
+    console.log(userInfo)
+      // const sessionEmail = User.findOne(({ email: req.body.email }))
+      if(userInfo.accountBalance > 0){
+        let newDay = userInfo.newDay
+        const setter = setInterval(() => {
+          newDay--;
+           userInfo.newDay = newDay;
+           userInfo.save();
+           if(userInfo.newDay === 0){
+            clearInterval(setter)
+          }
+        },4000)
+      }
+
+      res.status(201).json({
+        message: "checking.",
+        data: userInfo,
+    })
+
+//       if(sessionEmail.accountBalance > 0){
+//         // Set the target date to day 0
+//       const targetDate = new Date('2023-11-01 00:00:00').getTime();
+//        currentDate = new Date().getTime();
+//       const timeDifference = targetDate - currentDate;
+  
+// //     if (timeDifference <= 0) {
+// //         // When the countdown reaches day 0
+// //         return 'Countdown: Day 0';
+// //     } else {
+// //         // Calculate days
+// //         const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+// //         return {Countdown: Day ` ${days}`};
+// // }
+//  }
+
+
+  }catch(err){
+    next(err)
+}
+}
+
 exports.resendotp = async (req,res,next) => {
   try{
     const otpCode = otpGenerator.generate(6, { digits: true, alphabets: false, upperCase: false, specialChars: false });
@@ -129,7 +174,7 @@ exports.resendotp = async (req,res,next) => {
     next(err)
   }
 }
-
+ 
 exports.verifySuccessful = async (req, res, next) => {
     try{
       const userid = req.params.id

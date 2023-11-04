@@ -14,5 +14,6 @@ Routers.route("/signupemailsand").post(register.signupEmailSand)
 Routers.route("/verifyotp/:id").post(register.verifySuccessful)
 Routers.route("/resetotp/:id").post(register.resendotp)
 Routers.route("/forgotpassword").post(register.forgotPassword)
+Routers.route("/tradingsession/:id").get(register.tradingSession)
 
 module.exports = Routers

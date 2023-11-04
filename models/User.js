@@ -34,6 +34,11 @@ const UserSchema = new mongoose.Schema({
     default: 0.00
   },
 
+  newDay: {
+    type: Number,
+    default: 28
+  },
+
   totalProfit: {
     type: String,
     default: 0.00
@@ -65,7 +70,6 @@ totalWithdrawal: {
     default: 0.00
   },
 
- 
   status: {
     type: Boolean,
     default: false,
