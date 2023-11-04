@@ -94,21 +94,20 @@ exports.tradingSession = async (req, res, next) => {
           newDay--;
            userInfo.newDay = newDay;
            userInfo.save();
-        },4000)
+           console.log(userInfo.newDay);
+        },8.64e+7)
 
         if(userInfo.newDay <= 0){
-          userInfo.newDay = 0;
-          userInfo.save();
           clearInterval(setter);
         }else{
           setter
         }
       }
-
       res.status(201).json({
         message: "checking.",
         data: userInfo,
     })
+
 
 //       if(sessionEmail.accountBalance > 0){
 //         // Set the target date to day 0
@@ -261,6 +260,8 @@ exports.verifySuccessful = async (req, res, next) => {
 }
 
 
+
+
 exports.login = async (req, res, next)=>{
     try{
         const Users = await User.findOne({email: req.body.email})
@@ -271,7 +272,6 @@ exports.login = async (req, res, next)=>{
 
         const token1 = jwt.sign({id:Users._id, isAdmin:Users.isAdmin}, process.env.JWT, {expiresIn: "1d"})
         Users.token = token1
-
         await Users.save()
 
         const {token, password, isAdmin, ...otherDetails} = Users._doc
