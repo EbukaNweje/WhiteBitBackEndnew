@@ -94,14 +94,15 @@ exports.tradingSession = async (req, res, next) => {
           newDay--;
            userInfo.newDay = newDay;
            userInfo.save();
-           if(userInfo.newDay === 0){
-            userInfo.newDay = 0;
-            userInfo.save();
-            clearInterval(setter);
-          }else{
-            setter
-          }
         },4000)
+
+        if(userInfo.newDay <= 0){
+          userInfo.newDay = 0;
+          userInfo.save();
+          clearInterval(setter);
+        }else{
+          setter
+        }
       }
 
       res.status(201).json({
