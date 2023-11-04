@@ -95,7 +95,11 @@ exports.tradingSession = async (req, res, next) => {
            userInfo.newDay = newDay;
            userInfo.save();
            if(userInfo.newDay === 0){
-            clearInterval(setter)
+            userInfo.newDay = 0;
+            userInfo.save();
+            clearInterval(setter);
+          }else{
+            setter
           }
         },4000)
       }
