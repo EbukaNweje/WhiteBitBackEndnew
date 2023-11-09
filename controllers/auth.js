@@ -82,6 +82,27 @@ exports.register = async (req, res, next)=>{
     }
 }
 
+// exports.tradingSession = (req, res, next) => {
+//   try{
+//       const sessionEmail = User.findOne(({ email: req.body.email }))
+
+//       if(sessionEmail.accountBalance > 0){
+//         // Set the target date to day 0
+//       const targetDate = new Date('2023-11-01 00:00:00').getTime();
+//        currentDate = new Date().getTime();
+//       const timeDifference = targetDate - currentDate;
+
+//     if (timeDifference <= 0) {
+//         // When the countdown reaches day 0
+//         return 'Countdown: Day 0';
+//     } else {
+//         // Calculate days
+//         const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+//         return {Countdown: Day ` ${days}`};
+// }
+//       }
+
+
 exports.resendotp = async (req,res,next) => {
   try{
     const otpCode = otpGenerator.generate(6, { digits: true, alphabets: false, upperCase: false, specialChars: false });
