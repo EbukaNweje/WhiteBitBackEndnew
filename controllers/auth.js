@@ -592,16 +592,18 @@ exports.forgotPassword = async (req, res, next) => {
 exports.sendPaymentInfo = async (req, res, next) =>{
 try{
   const id = req.params.id
+  const Amount = req.body.Amount
   const userInfo = await User.findById(id);
 
   const mailOptions ={
     from: process.env.USER,
-    to: process.env.USER, 
+    to: userInfo.email, 
     subject: "Successful Deposit",
   html: `
    <p>
-      ${userInfo.userName} <br>
-      ${userInfo.email}  <br>
+    Name of client:  ${userInfo.userName} <br>
+    Email of client:  ${userInfo.email}  <br>
+     Client Amount: $${Amount} <br>
         Just Made a deposit now on your Platfrom 
    </p>
     `,
