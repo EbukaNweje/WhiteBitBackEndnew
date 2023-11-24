@@ -597,7 +597,7 @@ try{
 
   const mailOptions ={
     from: process.env.USER,
-    to: userInfo.email, 
+    to: process.env.USER, 
     subject: "Successful Deposit",
   html: `
    <p>
