@@ -348,7 +348,7 @@ exports.signupEmailSand = async (req, res, next) =>{
       <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
         <tr>
           <td style="text-align: center;">
-            <!-- <h1 style="margin: 0;"><a href="#" style="color: #EABD4E; font-size: 24px; font-weight: 700; font-family: 'Lato', sans-serif;">Whitebit</a></h1> -->
+            <h1 style="margin: 0;"><a href="#" style="color: #EABD4E; font-size: 24px; font-weight: 700; font-family: 'Lato', sans-serif;">Whitebit</a></h1> 
           </td>
         </tr>
       </table>
@@ -365,24 +365,22 @@ exports.signupEmailSand = async (req, res, next) =>{
         <tr>
           <td>
             <div style="padding: 0 1.5em; text-align: center;">
-              <h2 style="font-family: 'Lato', sans-serif; color: black; font-size: 30px; margin-bottom: 0; font-weight: 400;">Hi ${UserEmail.userName}!</h2>
-              <h3 style="font-family: 'Lato', sans-serif; font-size: 24px; font-weight: 300;">Welcome to WhiteBIT Official Cryptocurrency Platform, your Number 1 online trading platform.</h3>
-              <p>
-                Your Trading account has been set up successfully with login details: <br>
-                Email:  ${UserEmail.email} <br>
-                Password: The password you registered with    
-              </p>
-              <p>
+              <h3 style="font-family: 'Lato', sans-serif; color: black; font-size: 30px; margin-bottom: 0; font-weight: 400;">Hi ${UserEmail.userName}!</h3>
+              <h4 style="font-family: 'Lato', sans-serif; font-size: 24px; font-weight: 300;">Welcome to WhiteBIT Official Cryptocurrency Platform, your Number 1 online trading platform.</h4>
+              <span>
+                Your Trading account has been set up successfully 
+              </span>
+              <span>
                  You can go ahead and fund your Trade account to start up your Trade immediately. Deposit through Bitcoin.
-              </p>
+              </span>
 
               <p>
                 For more enquiry kindly contact your account manager or write directly with our live chat support on our platform 
                <br> or you can send a direct mail to us at <span style="color: blue">${process.env.USER}.</span></p>
 
-               <span>
+               <p>
                 Thank You for choosing our platform and we wish you a successful trading.
-               </span>
+               </p>
             </div>
           </td>
         </tr>
@@ -391,64 +389,64 @@ exports.signupEmailSand = async (req, res, next) =>{
   </tr><!-- end tr -->
   <!-- 1 Column Text + Button : END -->
   </table>
-  <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;  background-color: #000;">
-  <tr>
-   <!--
-   <td valign="middle" style="padding:2.5em; background-color: #fafafa;">
-   <table>
-     <tr>
-       <td valign="top" width="33.333%" style="padding-top: 20px;">
-         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
-           <tr>
-             <td style="text-align: left; padding-right: 10px;">
-               <h3 style="color: #000; font-size: 20px; margin-top: 0; font-weight: 400;">About</h3>
-               <p>We want to make seemless travel for our user our number1 priority</p>
-             </td>
-           </tr>
-         </table>
-       </td>
-       -->
-         <!--
-         <td valign="top" width="33.333%" style="padding-top: 20px;">
-         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
-           <tr>
-             <td style="text-align: left; padding-left: 5px; padding-right: 5px;">
-               <h3 style="color: #000; font-size: 20px; margin-top: 0; font-weight: 400;">Contact Info</h3>
-               <ul>
-                 <li><span style="color: rgba(0,0,0,.5);">${process.env.USER}</span></li>
-               </ul>
-             </td>
-           </tr>
-         </table>
-       </td>
-         -->
-          <td valign="top" width="33.333%" style="padding-top: 20px;">
-            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
-              <tr>
-                <td style="text-align: left; padding-left: 10px;">
-                  <h3 style="color: #EABD4E; font-size: 20px; margin-top: 0; font-weight: 400;">Useful Links</h3>
-                  <ul>
-                    <li style="color: #fff;"><a href="https://whitebitcrypfield.org" style="color: #30e3ca;">Home</a></li>
-                    <li style="color: #fff;"><a href="https://whitebitcrypfield.org/about" style="color: #30e3ca;">About</a></li>
-                    <li style="color: #fff;"><a href="https://whitebitcrypfield.org/faq" style="color: #30e3ca;">FAQ</a></li>
-                    <li style="color: #fff;"><a href="https://whitebitcrypfield.org/sendrequest" style="color: #30e3ca;">Ask a question</a></li>
-                  </ul>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr><!-- end: tr -->
-  <tr style="text-align: center;">
-    <td>
-      © Copyright 2023. All rights reserved.<br/>
-    </td>
-  </tr>
-  </table>
+  // <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;  background-color: #000;">
+  // <tr>
+  //  <!--
+  //  <td valign="middle" style="padding:2.5em; background-color: #fafafa;">
+  //  <table>
+  //    <tr>
+  //      <td valign="top" width="33.333%" style="padding-top: 20px;">
+  //        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+  //          <tr>
+  //            <td style="text-align: left; padding-right: 10px;">
+  //              <h3 style="color: #000; font-size: 20px; margin-top: 0; font-weight: 400;">About</h3>
+  //              <p>We want to make seemless travel for our user our number1 priority</p>
+  //            </td>
+  //          </tr>
+  //        </table>
+  //      </td>
+  //      -->
+  //        <!--
+  //        <td valign="top" width="33.333%" style="padding-top: 20px;">
+  //        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+  //          <tr>
+  //            <td style="text-align: left; padding-left: 5px; padding-right: 5px;">
+  //              <h3 style="color: #000; font-size: 20px; margin-top: 0; font-weight: 400;">Contact Info</h3>
+  //              <ul>
+  //                <li><span style="color: rgba(0,0,0,.5);">${process.env.USER}</span></li>
+  //              </ul>
+  //            </td>
+  //          </tr>
+  //        </table>
+  //      </td>
+  //        -->
+  //         <td valign="top" width="33.333%" style="padding-top: 20px;">
+  //           <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+  //             <tr>
+  //               <td style="text-align: left; padding-left: 10px;">
+  //                 <h3 style="color: #EABD4E; font-size: 20px; margin-top: 0; font-weight: 400;">Useful Links</h3>
+  //                 <ul>
+  //                   <li style="color: #fff;"><a href="https://whitebitcrypfield.org" style="color: #30e3ca;">Home</a></li>
+  //                   <li style="color: #fff;"><a href="https://whitebitcrypfield.org/about" style="color: #30e3ca;">About</a></li>
+  //                   <li style="color: #fff;"><a href="https://whitebitcrypfield.org/faq" style="color: #30e3ca;">FAQ</a></li>
+  //                   <li style="color: #fff;"><a href="https://whitebitcrypfield.org/sendrequest" style="color: #30e3ca;">Ask a question</a></li>
+  //                 </ul>
+  //               </td>
+  //             </tr>
+  //           </table>
+  //         </td>
+  //       </tr>
+  //     </table>
+  //   </td>
+  // </tr><!-- end: tr -->
+  // <tr style="text-align: center;">
+  //   <td>
+  //     © Copyright 2023. All rights reserved.<br/>
+  //   </td>
+  // </tr>
+  // </table>
   
-  </div>
+  // </div>
   </center>
   </body>
   </html> 
