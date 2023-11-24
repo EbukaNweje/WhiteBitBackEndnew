@@ -615,6 +615,11 @@ if(err){
 }
 })
 
+res.status(200).json({
+  status: 'success',
+  message: 'Payment has been sent',
+})
+
 }catch(err)
 {
   next(err);
