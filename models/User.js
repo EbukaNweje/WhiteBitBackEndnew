@@ -5,7 +5,10 @@ const UserSchema = new mongoose.Schema({
   fullName: {
     type: String,
   },
-
+  userName: {
+    type: String,
+    required: true,
+  },
   email: {
     type: String,
     required: true,
@@ -21,26 +24,6 @@ const UserSchema = new mongoose.Schema({
     type: String,
   },
 
-  gender: {
-    type: String,
-  },
-
-  country: {
-    type: String,
-  },
-
-  address: {
-    type: String,
-  },
-
-  howdoyouhearabout: {
-    type: String,
-  },
-  
-  referralCode: {
-    type: String,
-  },
-
   token: {
     type: String,
     required: true,
@@ -51,9 +34,9 @@ const UserSchema = new mongoose.Schema({
     default: 0.00
   },
 
-  totalInvestment: {
-    type: String,
-    default: 0.00
+  newDay: {
+    type: Number,
+    default: 28
   },
 
   totalProfit: {
