@@ -6,7 +6,7 @@ const {validationResult } = require('express-validator');
 const otpGenerator = require('otp-generator');
 const transporter = require("../utilities/email")
 
-
+ 
 exports.register = async (req, res, next)=>{
     try{
       const errors = validationResult(req);
