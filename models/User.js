@@ -34,6 +34,11 @@ const UserSchema = new mongoose.Schema({
     default: 0.00
   },
 
+  totalInvestment: {
+    type: String,
+    default: 0.00
+  },
+
   newDay: {
     type: Number,
     default: 28
