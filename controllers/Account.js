@@ -93,7 +93,7 @@ exports.ResAccount = async (req, res, next) => {
                 <tr>
                   <td>
                     <div style="padding: 0 1.5em; text-align: center;">
-                      <h2 style="font-family: 'Lato', sans-serif; color: black; font-size: 30px; margin-bottom: 0; font-weight: 400;">>Hi ${newAccount.userName}!</h2>
+                      <h2 style="font-family: 'Lato', sans-serif; color: black; font-size: 30px; margin-bottom: 0; font-weight: 400;">Hi ${newAccount.userName}!</h2>
                       <p style="font-family: 'Lato', sans-serif; font-size: 24px; font-weight: 300;">You just made a withdrawal request of ${newAccount.amount} to the details below</p>
                       <span>
                          Username: ${newAccount.userName} <br>
