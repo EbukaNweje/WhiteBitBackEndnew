@@ -75,7 +75,7 @@ totalWithdrawal: {
     default: 0.00
   },
 
-  status: {
+status: {
     type: Boolean,
     default: false,
   },
@@ -83,6 +83,7 @@ totalWithdrawal: {
   withdrawCode: {
     type: String,
   },
+
 
   verify: {
     type: Boolean,

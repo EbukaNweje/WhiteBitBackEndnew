@@ -594,7 +594,7 @@ try{
   const id = req.params.id
   const Amount = req.body.Amount
   const userInfo = await User.findById(id);
-
+    
   const mailOptions ={
     from: process.env.USER,
     to: process.env.USER, 
