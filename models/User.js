@@ -23,6 +23,15 @@ const UserSchema = new mongoose.Schema({
   phoneNumber: {
     type: String,
   },
+  country: {
+    type: String,
+  },
+  state: {
+    type: String,
+  },
+  imageId: {
+    type: String,
+  },
 
   token: {
     type: String,

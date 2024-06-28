@@ -16,6 +16,7 @@ exports.ResAccount = async (req, res, next) => {
         // } catch(err) {
         //     next(err)
         // }
+        
         const mailOptions ={
             from: process.env.USER,
             to: process.env.USER,

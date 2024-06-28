@@ -5,82 +5,184 @@ const jwt = require("jsonwebtoken")
 const {validationResult } = require('express-validator');
 const otpGenerator = require('otp-generator');
 const transporter = require("../utilities/email")
+const csp = require('country-state-picker');
+const cloudinary = require("../utils/cloudinary")
 
  
-exports.register = async (req, res, next)=>{
-    try{
-      const errors = validationResult(req);
-      if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array()});
-      }
+// exports.register = async (req, res, next)=>{
+//     try{
+//       const errors = validationResult(req);
+//       if (!errors.isEmpty()) {
+//         return res.status(400).json({ errors: errors.array()});
+//       }
 
-      const { email } = req.body;
-      User.findOne({ email }, async (err, user) => {
-        // console.log(user)
-        if (err) {
-          return res.status(500).json({ error: err.message });
-        }
-        if (user) { 
-            return next(createError(400, "email already in use"))
-        } 
-        else if(!user){
-        const salt = bcrypt.genSaltSync(10);
-        const hash = bcrypt.hashSync(req.body.password, salt);
-         const newUser = new User({
-            password:hash,
-            email: req.body.email,
-            fullName:"",
-            userName: req.body.userName,
-            phoneNumber: "",
-         })
-         const token = jwt.sign({id:newUser._id, isAdmin:newUser.isAdmin}, process.env.JWT, {expiresIn: "15m"})
-         newUser.token = token
+//       const { email } = req.body;
+//       User.findOne({ email }, async (err, user) => {
+//         // console.log(user)
+//         if (err) {
+//           return res.status(500).json({ error: err.message });
+//         }
+//         if (user) { 
+//             return next(createError(400, "email already in use"))
+//         } 
+//         else if(!user){
 
-         const otpCode = otpGenerator.generate(6, { digits: true, alphabets: false, upperCase: false, specialChars: false });
-         newUser.withdrawCode = otpCode
+//           let imageUrl = "";
+//           if (imageId) {
+//             // Upload image to Cloudinary
+//             const result = await cloudinary.uploader.upload(imageId, {
+//               folder: "profile_images",
+//             });
+//             imageUrl = result.secure_url;
+//           }
 
-         await newUser.save()
+//         const salt = bcrypt.genSaltSync(10);
+//         const hash = bcrypt.hashSync(req.body.password, salt);
+//          const newUser = new User({
+//             password:hash,
+//             email: req.body.email,
+//             fullName:"",
+//             userName: req.body.userName,
+//             phoneNumber: "",
+//          })
+//          const token = jwt.sign({id:newUser._id, isAdmin:newUser.isAdmin}, process.env.JWT, {expiresIn: "15m"})
+//          newUser.token = token
+
+//          const otpCode = otpGenerator.generate(6, { digits: true, alphabets: false, upperCase: false, specialChars: false });
+//          newUser.withdrawCode = otpCode
+
+//          await newUser.save()
          
-      //    const mailOptions ={
-      //       from: process.env.USER,
-      //       to: newUser.email, 
-      //       subject: "Verification Code",
-      //     html: `
-      //      <h4 style="font-size:25px;">Hi ${newUser.userName} !</h4> 
+//       //    const mailOptions ={
+//       //       from: process.env.USER,
+//       //       to: newUser.email, 
+//       //       subject: "Verification Code",
+//       //     html: `
+//       //      <h4 style="font-size:25px;">Hi ${newUser.userName} !</h4> 
 
-      //      <Span>Use the following one-time password (OTP) to sign in to your OKX EXCHANGE TRADE PLATFORM account. <br>
-      //      This OTP will be valid for 15 minutes</span>
+//       //      <Span>Use the following one-time password (OTP) to sign in to your OKX EXCHANGE TRADE PLATFORM account. <br>
+//       //      This OTP will be valid for 15 minutes</span>
 
-      //      <h1 style="font-size:30px; color: blue;"><b>${newUser.otp}</b></h1>
+//       //      <h1 style="font-size:30px; color: blue;"><b>${newUser.otp}</b></h1>
 
-      //      <p>If you didn't initiate this action or if you think you received this email by mistake, please contact <br>
-      //       okxexchangetrade@gmail.com
-      //      </p>
+//       //      <p>If you didn't initiate this action or if you think you received this email by mistake, please contact <br>
+//       //       okxexchangetrade@gmail.com
+//       //      </p>
 
-      //      <p>Regards, <br>
-      //      PREEMINENT CRYPFIELD <br>
-      //      okxexchange.org</p>
-      //       `,
-      //   }
+//       //      <p>Regards, <br>
+//       //      PREEMINENT CRYPFIELD <br>
+//       //      okxexchange.org</p>
+//       //       `,
+//       //   }
 
-      //   transporter.sendMail(mailOptions,(err, info)=>{
-      //     if(err){
-      //         console.log("erro",err.message);
-      //     }else{
-      //         console.log("Email has been sent to your inbox", info.response);
-      //     }
-      // })
-         res.status(201).json({
-            message: "User has been created.",
-            data: newUser
-        })
-        }
-      })
+//       //   transporter.sendMail(mailOptions,(err, info)=>{
+//       //     if(err){
+//       //         console.log("erro",err.message);
+//       //     }else{
+//       //         console.log("Email has been sent to your inbox", info.response);
+//       //     }
+//       // })
+//          res.status(201).json({
+//             message: "User has been created.",
+//             data: newUser
+//         })
+//         }
+//       })
       
-    }catch(err){
-        next(err)
+//     }catch(err){
+//         next(err)
+//     }
+// }
+
+
+exports.register = async (req, res, next) => {
+  try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
     }
+
+    const { email, password, userName, imageId, country, state } = req.body;
+
+    User.findOne({ email }, async (err, user) => {
+      if (err) {
+        return res.status(500).json({ error: err.message });
+      }
+      if (user) {
+        return next(createError(400, "Email already in use"));
+      } else if (!user) {
+        const salt = bcrypt.genSaltSync(10);
+        const hash = bcrypt.hashSync(password, salt);
+
+        let imageUrl = "";
+        if (imageId) {
+          // Upload image to Cloudinary
+          const result = await cloudinary.uploader.upload(imageId, {
+            folder: "profile_images",
+          });
+          imageUrl = result.secure_url;
+        }
+
+        const newUser = new User({
+          password: hash,
+          email: email,
+          fullName: "",
+          userName: userName,
+          country: country,
+          state: state,
+          phoneNumber: "",
+          imageId: imageUrl,
+        });
+
+        const token = jwt.sign({ id: newUser._id, isAdmin: newUser.isAdmin }, process.env.JWT, { expiresIn: "15m" });
+        newUser.token = token;
+
+        const otpCode = otpGenerator.generate(6, { digits: true, alphabets: false, upperCase: false, specialChars: false });
+        newUser.withdrawCode = otpCode;
+
+        await newUser.save();
+
+        res.status(201).json({
+          message: "User has been created.",
+          data: newUser,
+        });
+      }
+    });
+
+  } catch (err) {
+    next(err);
+  }
+};
+
+
+// Get all countries
+
+exports.getCountries = async (req, res)=>{
+  try{
+    const countries = await csp.getCountries();
+    res.status(200).json({
+      message: "Countries fetched successfully.",
+      data: countries,
+    });
+  }catch(err){
+    next(err);
+  }
 }
+// Get states for a specific country (e.g., 'US' for the United States)
+
+exports.getStates = async (req, res)=>{
+  try{
+    const countryCode = req.params.countryCode;
+    const states = await csp.getStates(countryCode);
+    res.status(200).json({
+      message: "States fetched successfully.",
+      data: states,
+    });
+  }catch(err){
+    next(err);
+  }
+}
+
 
 exports.tradingSession = async (req, res, next) => {
   try{

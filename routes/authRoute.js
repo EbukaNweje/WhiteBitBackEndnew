@@ -1,13 +1,16 @@
 const express = require("express")
 const register = require("../controllers/auth")
 const { check } = require('express-validator');
+const upload = require("../utils/multer");
 
 const Routers = express.Router()
 
 Routers.route("/register").post([
     check('email', 'Please include a valid email').isEmail(),
-  ],register.register)
+  ], upload.single("imageId"), register.register)
 Routers.route("/login").post(register.login)
+Routers.route("/allcountry").post(register.getCountries)
+Routers.route("/allstate/:countryCode").post(register.getStates)
 Routers.route("/restLink/:id/:token").post(register.restLink).get(register.getrestlink)
 Routers.route("/loginemailsand").post(register.loginEmailSand)
 Routers.route("/signupemailsand").post(register.signupEmailSand)
