@@ -25,17 +25,14 @@ const UserSchema = new mongoose.Schema({
 
   gender: {
     type: String,
-    required: true,
   },
 
   country: {
     type: String,
-    required: true,
   },
 
   userName: {
     type: String,
-    required: true,
   },
 
   state: {
