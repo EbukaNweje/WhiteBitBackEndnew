@@ -4,11 +4,9 @@ const UserSchema = new mongoose.Schema({
   
   fullName: {
     type: String,
-  },
-  userName: {
-    type: String,
     required: true,
   },
+
   email: {
     type: String,
     required: true,
@@ -22,14 +20,37 @@ const UserSchema = new mongoose.Schema({
 
   phoneNumber: {
     type: String,
+    required: true,
   },
+
+  gender: {
+    type: String,
+    required: true,
+  },
+
   country: {
     type: String,
+    required: true,
   },
+
+  userName: {
+    type: String,
+    required: true,
+  },
+
   state: {
     type: String,
   },
+  
   imageId: {
+    type: String,
+  },
+
+  howdoyouhearabout: {
+    type: String,
+  },
+  
+  referralCode: {
     type: String,
   },
 
@@ -39,32 +60,27 @@ const UserSchema = new mongoose.Schema({
   },
 
   accountBalance: {
-    type: String,
+    type: Number,
     default: 0.00
   },
 
   totalInvestment: {
-    type: String,
+    type: Number,
     default: 0.00
   },
 
-  newDay: {
-    type: Number,
-    default: 28
-  },
-
   totalProfit: {
-    type: String,
+    type: Number,
     default: 0.00
   },
 
   bonus: {
-    type: String,
+    type: Number,
     default: 0.00
   },
 
   tradingAccounts: {
-    type: String,
+    type: Number,
     default: 0.00
   },
 
@@ -73,18 +89,17 @@ const UserSchema = new mongoose.Schema({
     default: 0.00
   },
 
-  
 totalDeposit: {
-    type: String,
+    type: Number,
     default: 0.00
   },
 
 totalWithdrawal: {
-    type: String,
+    type: Number,
     default: 0.00
   },
 
-status: {
+  status: {
     type: Boolean,
     default: false,
   },
@@ -93,17 +108,41 @@ status: {
     type: String,
   },
 
-
   verify: {
-    type: Boolean,
-    default: true,
-  },
-
-  isAdmin: {
-    // Role of user it will be (normal or admin )
     type: Boolean,
     default: false,
   },
+
+  isAdmin: {
+    type: Boolean,
+    default: false,
+  },
+  admin:{
+     type: mongoose.SchemaTypes.ObjectId,
+     ref: "admin"
+  },
+  investmentPlan:[{
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: "userplan",
+  }],
+  Transactions: {
+    deposits: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'deposit'
+    }],
+    withdrawals: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'withdraw'
+    }],
+    investments: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Invest'
+    }],
+    interests: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Interest'
+    }],
+},
 
 }, {timestamps: true});
 
