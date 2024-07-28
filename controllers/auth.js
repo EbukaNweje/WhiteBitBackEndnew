@@ -358,7 +358,7 @@ exports.login = async (req, res, next)=>{
         const isPasswordCorrect = await bcrypt.compare(req.body.password, Users.password)
         if(!isPasswordCorrect) return next(createError(400, "Wrong password or username"))
 
-        if(Users.verify === false)return next(createError(400, "User have not been verified"))
+        // if(Users.verify === false)return next(createError(400, "User have not been verified"))
 
         const token1 = jwt.sign({id:Users._id, isAdmin:Users.isAdmin}, process.env.JWT, {expiresIn: "1d"})
         Users.token = token1
