@@ -11,7 +11,7 @@ const investRouter = require("./routes/investRouter")
 const planRouter = require("./routes/plansRouter")
 const cors = require("cors");
 const app = express()
-app.use(cors());
+app.use(cors("*"));
 
 app.use(fileUploader({
     useTempFiles: true

@@ -92,9 +92,9 @@ exports.register = async (req, res, next) => {
             fullName: "",
             userName: userName,
             country: country,
-            state: state,
             phoneNumber: "",
             imageId: imageUrl,
+            // state: state,
           });
   
           const token = jwt.sign({ id: newUser._id, isAdmin: newUser.isAdmin }, process.env.JWT, { expiresIn: "15m" });
