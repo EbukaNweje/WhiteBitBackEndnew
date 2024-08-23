@@ -65,7 +65,7 @@ exports.register = async (req, res, next) => {
         return res.status(400).json({ errors: errors.array() });
       }
   
-      const { email, password, userName, imageId, country, state} = req.body;
+      const { email, password, userName, imageId, country} = req.body;
   
       User.findOne({ email }, async (err, user) => {
         if (err) {
@@ -80,7 +80,7 @@ exports.register = async (req, res, next) => {
           let imageUrl = "";
           if (imageId) {
             // Upload image to Cloudinary
-            const result = await cloudinary.uploader.upload(imageId, {
+            const result = await cloudinary.uploader.upload(req.file.path, {
               folder: "profile_images",
             });
             imageUrl = result.secure_url;
